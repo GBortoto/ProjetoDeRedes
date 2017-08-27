@@ -51,9 +51,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ColorHandler.cs" />
-     <Compile Include="Assets\Scripts\PowerUps.cs" />
-     <Compile Include="Assets\Scripts\RotatePowerUp.cs" />
+     <Compile Include="Assets\Scripts\Camera.cs" />
+     <Compile Include="Assets\Scripts\Colors\ColorHandler.cs" />
+     <Compile Include="Assets\Scripts\ExtraUtilities.cs" />
+     <Compile Include="Assets\Scripts\MainController.cs" />
+     <Compile Include="Assets\Scripts\Player Control\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Player Control\PlayerMotor.cs" />
+     <Compile Include="Assets\Scripts\Player Control\PowerUps.cs" />
+     <Compile Include="Assets\Scripts\Player Control\RotatePowerUps.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

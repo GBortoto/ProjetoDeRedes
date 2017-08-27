@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PowerUps.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player Control\PowerUps.cs">
     <Files>
-      <File FileName="Assets\Scripts\PowerUps.cs" Line="14" Column="23" />
-      <File FileName="Assets\Scripts\RotatePowerUp.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\Player Control\PlayerMotor.cs" Line="4" Column="22" />
+      <File FileName="Assets\Scripts\Player Control\PlayerController.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\Camera.cs" Line="10" Column="53" />
+      <File FileName="Assets\Scripts\Player Control\PowerUps.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
