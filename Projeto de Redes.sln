@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto de Redes", "Assembly-CSharp.csproj", "{44E08F1F-569A-1362-039F-E1D4692E813C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44E08F1F-569A-1362-039F-E1D4692E813C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E08F1F-569A-1362-039F-E1D4692E813C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E08F1F-569A-1362-039F-E1D4692E813C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E08F1F-569A-1362-039F-E1D4692E813C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
