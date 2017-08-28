@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\Player Control\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\Player Control\PowerUps.cs" />
      <Compile Include="Assets\Scripts\Player Control\RotatePowerUps.cs" />
+     <Compile Include="Assets\Scripts\SavePoint\Float.cs" />
+     <Compile Include="Assets\Scripts\SavePoint\SaveSpace.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
