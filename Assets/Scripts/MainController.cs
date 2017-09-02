@@ -7,9 +7,11 @@ public class MainController : MonoBehaviour {
 	[SerializeField] ColorHandler Player1;
 	[SerializeField] ColorHandler Player2;
 
+
 	// Use this for initialization
 	void Start () {
 		//StartCoroutine (flashColors ());
+		Player1.Blue();
 	}
 
 	IEnumerator flashColors(){

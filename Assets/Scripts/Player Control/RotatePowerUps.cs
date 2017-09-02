@@ -4,39 +4,38 @@ using UnityEngine;
 
 public class RotatePowerUps : MonoBehaviour {
 
-	GameObject player;
-	float orbitDegreesPerSec;
-	float orbitDistance;
+	private GameObject player;
+
+	public float offset;
+	public float orbitRadius;
+	public float frequency;
+	public float nObjects;
+
+	private Vector3 originalPosition = new Vector3 ();
+	private Vector3 nextPosition = new Vector3 ();
 
 	// Use this for initialization
 	void Start () {
-
 		Debug.Log ("Estou vivo!");
+
 		player = GameObject.FindGameObjectWithTag ("Player");
-		orbitDistance = player.GetComponent<PowerUps> ().orbitSize;
-		orbitDegreesPerSec = player.GetComponent<PowerUps> ().orbitDegreesPerSec;
-		//Debug.Log (player.name);
 
-		transform.position = player.transform.position + new Vector3 (0f, orbitDistance, 0f);
+		originalPosition = player.transform.position;
 
-		//transform.position = (transform.position - player.transform.position).normalized * orbitDistance + player.transform.position;
+		this.orbitRadius = player.GetComponent<PowerUps> ().orbitRadius;
+
+		this.frequency = player.GetComponent<PowerUps> ().frequency;
+
+		this.nObjects = player.GetComponent<PowerUps> ().nObjects;
 	}
+
 
 	// Update is called once per frame
 	void Update () {
-		Orbit ();
-	}
-
-	void Orbit(){
-
-		transform.RotateAround (player.transform.position, Vector3.forward, orbitDegreesPerSec * Time.deltaTime);
-		//var desiredPosition = (transform.position - player.transform.position).normalized * orbitDistance + player.transform.position;
-		//transform.position = Vector3.MoveTowards(transform.position, desiredPosition, Time.deltaTime * radiusSpeed);
-
-		/*
-		//transform.RotateAround (player.transform.position, Vector3.forward, orbitDegreesPerSec * Time.deltaTime);
-		transform.position = player.transform.position + (transform.position - player.transform.position).normalized * orbitDistance;
-		transform.RotateAround(player.transform.position, Vector3.forward, orbitDegreesPerSec * Time.deltaTime);
-		*/
+		originalPosition = player.transform.position;
+		nextPosition.x = originalPosition.x + Mathf.Sin (Time.fixedTime * Mathf.PI * frequency + (offset*Mathf.PI/180)) * orbitRadius;
+		nextPosition.y = originalPosition.y + Mathf.Sin (Time.fixedTime * Mathf.PI * frequency + (offset*Mathf.PI/180) + (Mathf.PI/2)) * orbitRadius;
+		nextPosition.z = transform.position.z;
+		transform.position = nextPosition;
 	}
 }

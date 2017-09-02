@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class ColorHandler : MonoBehaviour {
 
-	//[SerializeField] Material color;
+	private Color currentColor;
+	private Color finalColor;
+	private Renderer rend;
+	public float defaultSpeed = 10f;
+	private bool updateRGB = false;
+	private bool doneR = true;
+	private bool doneG = true;
+	private bool doneB = true;
+	public float gap = 0.1f;
+	[SerializeField] Light playerLight;
 
-	public Color currentColor;
-	public Color finalColor;
-	public Renderer rend;
 
-	float defaultSpeed = 10f;
+	private int currentPowerUp = 0;
 
-
-	bool updateRGB = false;
-	bool doneR = true;
-	bool doneG = true;
-	bool doneB = true;
-
-	float gap = 0.1f;
-
-	Light playerLight;
 
 	void Start() {
 		rend = GetComponent<Renderer> ();
@@ -35,15 +32,19 @@ public class ColorHandler : MonoBehaviour {
 
 	public void Red(){
 		changeColor (Color.red, defaultSpeed);
+
 	}
 	public void Blue(){
 		changeColor (Color.blue, defaultSpeed);
+
 	}
 	public void Green(){
 		changeColor (Color.green, defaultSpeed);
+
 	}
 	public void Yellow(){
 		changeColor (Color.yellow, defaultSpeed);
+
 	}
 
 
@@ -81,7 +82,6 @@ public class ColorHandler : MonoBehaviour {
 	public bool isChanging(){
 		return updateRGB;
 	}
-
 
 
 	void updatePlayerRGB(){

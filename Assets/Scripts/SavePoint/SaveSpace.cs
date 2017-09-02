@@ -4,26 +4,63 @@ using UnityEngine;
 
 public class SaveSpace : MonoBehaviour {
 
-	private GameObject player;
+	bool playerIsPresent = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	private GameObject player;
+	private GameObject floatingKey;
+	private Renderer floatingKeyRenderer;
 
 	void OnTriggerEnter(Collider other) {
 		player = other.gameObject;
+		playerIsPresent = true;
+		showActivateButton ();
 		Debug.Log (player.name + " Entrou");
 	}
 
 	void OnTriggerExit(Collider other){
 		player = other.gameObject;
+		playerIsPresent = false;
+		hideActivateButton ();
 		Debug.Log (player.name + " Saiu");
+	}
+
+	void showActivateButton(){
+		
+	}
+
+	void hideActivateButton(){
+
 	}
 
 
 	// Update is called once per frame
 	void Update () {
+		// If the user press SPACE while inside the save point, enter the menu
+		if (ExtraUtilities.checkPress (" ") && playerIsPresent) {
+			Debug.Log ("Spawn point - Interaction");
+			//Interact (player);
+		}
+	}
+
+	/*
+	void Interact(GameObject player){
+		if(floatingKey){
+			if(floatingKeyRenderer){
+				floatingKeyRenderer.material.color.a = ;
+			} else {
+				gameObject.GetComponent<Renderer>();
+			}
+		}
+		(GameObject)Instantiate (powerUpPrefab, myPosition, transform.rotation, gameObject.transform);
+	}
+
+	void fadeInKeyBox(){
 		
 	}
+
+	void fadeOutKeyBox(){
+		
+	}
+
+	*/
 }

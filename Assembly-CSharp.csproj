@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{44E08F1F-569A-1362-039F-E1D4692E813C}</ProjectGuid>
+    <ProjectGuid>{5FBED94C-59E1-4308-C4F8-A5DA9E46EB20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Colors\ColorHandler.cs" />
      <Compile Include="Assets\Scripts\ExtraUtilities.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
+     <Compile Include="Assets\Scripts\Orbit.cs" />
      <Compile Include="Assets\Scripts\Player Control\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player Control\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\Player Control\PowerUps.cs" />

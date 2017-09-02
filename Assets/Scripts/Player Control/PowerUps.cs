@@ -5,20 +5,29 @@ using UnityEngine;
 public class PowerUps : MonoBehaviour {
 
 	bool powerUpOn = false;
+	bool updating = false;
 
-	public float orbitSize = 1f;
-	public float orbitDegreesPerSec = 180.0f;
+	public float orbitRadius;
+	public float frequency;
+	public float nObjects;
 
 	public GameObject powerUpPrefab;
 
-	GameObject[] powerUp;
+	private GameObject[] powerUp;
+	private Transform[] positions;
+
 
 	IEnumerator SpawnBoxes(){
 		Vector3 myPosition = transform.position;
-		for(int i=0; i<3; i++){
-			powerUp[i] = (GameObject)Instantiate (powerUpPrefab, myPosition, transform.rotation, gameObject.transform);			
-			yield return new WaitForSeconds (1);
+		for(int i=0; i<nObjects; i++){
+			//Debug.Log ("Spawning - " + i);
+			powerUp[i] = (GameObject) Instantiate (powerUpPrefab, myPosition, transform.rotation, gameObject.transform);
+			powerUp [i].GetComponent<RotatePowerUps> ().offset = (360f/nObjects)*i;
+			//Debug.Log (360f / (orbitDegreesPerSec * nObjects));
+			//yield return new WaitForSeconds ( 360f / (orbitDegreesPerSec * nObjects));
 		}
+		updating = false;
+		yield return null;
 	}
 
 	void turnOnPowerUp(){
@@ -34,20 +43,22 @@ public class PowerUps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		powerUp = new GameObject[3];
+		powerUp = new GameObject[(int)nObjects];
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if(ExtraUtilities.checkPress("x")){
-			if (powerUpOn) {
-				powerUpOn = false;
-				turnOffPowerUp ();
-				Debug.Log ("Power up OFF");
-			} else {
+		if(Input.GetKeyDown("x")){
+			Debug.Log ("1");
+			if (!powerUpOn) {
+				Debug.Log ("2");
 				powerUpOn = true;
+				updating = true;
 				turnOnPowerUp ();
-				Debug.Log ("Power up ON");
+			} else if(powerUpOn && !updating){
+				Debug.Log ("3");
+				powerUpOn = false;
+				turnOffPowerUp();
 			}
 
 		}
