@@ -49,14 +49,14 @@ public class PowerUps : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown("x")){
-			Debug.Log ("1");
+			//Debug.Log ("1");
 			if (!powerUpOn) {
-				Debug.Log ("2");
+				//Debug.Log ("2");
 				powerUpOn = true;
 				updating = true;
 				turnOnPowerUp ();
 			} else if(powerUpOn && !updating){
-				Debug.Log ("3");
+				//Debug.Log ("3");
 				powerUpOn = false;
 				turnOffPowerUp();
 			}

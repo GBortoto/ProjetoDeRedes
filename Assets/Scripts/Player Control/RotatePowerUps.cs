@@ -16,7 +16,7 @@ public class RotatePowerUps : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Estou vivo!");
+		//Debug.Log ("Estou vivo!");
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 

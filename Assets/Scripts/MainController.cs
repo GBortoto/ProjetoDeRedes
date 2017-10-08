@@ -14,6 +14,25 @@ public class MainController : MonoBehaviour {
 		Player1.Blue();
 	}
 
+
+
+	void Update () {
+		if(ExtraUtilities.checkPress("z")){
+			Player1.Red ();
+		}
+		if(ExtraUtilities.checkPress("x")){
+			Player1.Green ();
+		}
+		if(ExtraUtilities.checkPress("c")){
+			Player1.Blue ();
+		}
+		if(ExtraUtilities.checkPress("v")){
+			Player1.Yellow ();
+		}
+
+
+	}
+
 	IEnumerator flashColors(){
 
 		yield return new WaitForSeconds (2);
@@ -36,24 +55,6 @@ public class MainController : MonoBehaviour {
 			counter++;
 		}
 		yield break;
-	}
-
-	void Update () {
-		if(ExtraUtilities.checkPress("z")){
-			Player1.Red ();
-		}
-		if(ExtraUtilities.checkPress("x")){
-			Player1.Green ();
-		}
-		if(ExtraUtilities.checkPress("c")){
-			Player1.Blue ();
-		}
-		if(ExtraUtilities.checkPress("v")){
-			Player1.Yellow ();
-		}
-
-
-
 	}
 
 }
