@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\Colors\ColorHandler.cs" />
+     <Compile Include="Assets\Scripts\Colors\ColorUpdateReturn.cs" />
      <Compile Include="Assets\Scripts\ExtraUtilities.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\Orbit.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\Scripts\Player Control\PlayerMotor.cs" />
      <Compile Include="Assets\Scripts\Player Control\PowerUps.cs" />
      <Compile Include="Assets\Scripts\Player Control\RotatePowerUps.cs" />
+     <Compile Include="Assets\Scripts\PowerUpElement.cs" />
      <Compile Include="Assets\Scripts\SavePoint\Float.cs" />
      <Compile Include="Assets\Scripts\SavePoint\SaveSpace.cs" />
  <Reference Include="UnityEngine.UI">

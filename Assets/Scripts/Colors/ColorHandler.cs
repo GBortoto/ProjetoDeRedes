@@ -1,148 +1,91 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ColorHandler : MonoBehaviour {
 
-	private Color currentColor;
-	private Color finalColor;
-	private Renderer rend;
-	public float defaultSpeed = 10f;
-	private bool updateRGB = false;
-	private bool doneR = true;
-	private bool doneG = true;
-	private bool doneB = true;
-	public float gap = 0.1f;
-	[SerializeField] Light playerLight;
+	protected Color currentColor;		// Cor atual --> Muda durante o processo de alteração de cores
+	private Color finalColor;			// Cor final --> Representa o objetivo final atual em relação a cor
+	protected Renderer rend;			// Render deste objeto --> Utilizado para a mudança de cor
+	Light objectLight;	// Luz referente ao objeto
 
+	// Variáveis utilizadas no processo de alteração de cores
+	private bool updateRGB = false;		// Devo modificar a cor atual?
+	private bool doneR = true;			// O R de RGB está com o valor certo?
+	private bool doneG = true;			// O G de RGB está com o valor certo?
+	private bool doneB = true;			// O B de RGB está com o valor certo?
+	public float gap = 0.1f;			// Limite mínimo de diferença entre um valor errado e um valor certo
+
+	 
+	/*
+	// ------------------------ currentPowerUp --> Mostra qual power-up está ativo no momento ---------------
 
 	private int currentPowerUp = 0;
 
+	public int getCurrentPowerUp(){
+		return currentPowerUp;
+	}
+	*/
 
-	void Start() {
+	// ------------------------------------------------------------------------------------------------------
+
+	// Start --> Criar uma referência para o render e a luz do objeto
+	protected void Start() {
 		rend = GetComponent<Renderer> ();
-		playerLight = gameObject.GetComponent<Light> ();
+		objectLight = gameObject.GetComponent<Light> ();
 	}
 
-	// Update is called once per frame
-	void Update () {
-		updatePlayerColor ();
+	// Checa uma vez por frame se é necessário mudar a cor deste objeto
+	protected void Update () {
+		updateObjectColor ();
 	}
 
-
-	public void Red(){
-		changeColor (Color.red, defaultSpeed);
-
-	}
-	public void Blue(){
-		changeColor (Color.blue, defaultSpeed);
-
-	}
-	public void Green(){
-		changeColor (Color.green, defaultSpeed);
-
-	}
-	public void Yellow(){
-		changeColor (Color.yellow, defaultSpeed);
-
+	// Checa se é necessário mudar a cor deste objeto
+	void updateObjectColor(){
+		if(updateRGB){
+			updateObjectRGB();
+		}
 	}
 
-
-
-
+	// Comando para modificar a cor --> ESTE É O COMANDO A SER CHAMADO EXTERNAMENTE
 	public void changeColor(Color color, float speed = 10f){
 		if(rend == null){
 			rend = GetComponent<Renderer> ();
 		}
 
+		// A cor já está sendo modificada?
 		if(updateRGB){
 			return;
 		}
-
-		currentColor = rend.material.color;
-		finalColor = color;
-		gap = 0.01f * speed;
-		updateRGB = true;
-		doneR = false;
-		doneG = false;
-		doneB = false;
-
-		//Debug.Log (this.tag.ToString() + " | Changing color");
-		//Debug.Log ("Changing color from (" + currentColor.ToString() + ") to (" + finalColor.ToString() + ")");
+			
+		currentColor = rend.material.color;	// Cor atual é atualizada
+		finalColor = color;					// Cor final é atualizada
+		gap = 0.01f * speed;				// Limite mínimo de diferença é atualizado
+		updateRGB = true;					// A cor está sendo modificada
+		doneR = false;						// Ainda não está completo a parte R de RGB
+		doneG = false;						// Ainda não está completo a parte G de RGB
+		doneB = false;						// Ainda não está completo a parte B de RGB
 	}
+		
 
-
-
-	void updatePlayerColor(){
-		if(updateRGB){
-			updatePlayerRGB();
-		}
-	}
-
-	public bool isChanging(){
-		return updateRGB;
-	}
-
-
-	void updatePlayerRGB(){
+	// Checa se todas as parcelas de RGB estão no valor certo. As modifica caso contrário
+	protected void updateObjectRGB(){
+		ColorUpdateReturn retorno;
 		if(!doneR){
-			//Debug.Log ("currentColor.r = " + currentColor.r);
-			//Debug.Log ("finalColor.r = " + currentColor.r);
-			if (currentColor.r + gap >= finalColor.r && currentColor.r <= finalColor.r) {
-				currentColor.r = finalColor.r;
-				doneR = true;
-				//Debug.Log ("DoneR");	
-			} else if (currentColor.r - gap <= finalColor.r && currentColor.r >= finalColor.r) {
-				currentColor.r = finalColor.r;
-				doneR = true;
-				//Debug.Log ("DoneR");
-			} else {
-				if (currentColor.r > finalColor.r) {
-					currentColor.r = currentColor.r - gap;
-				} else if (currentColor.r < finalColor.r) {
-					currentColor.r = currentColor.r + gap;
-				}
-			}
+			retorno = updateColor(currentColor.r , finalColor.r);
+			currentColor.r = retorno.getColorComponent();
+			doneR = retorno.isfinished ();
 		}
-
 		if(!doneG){
-			//Debug.Log ("currentColor.g = " + currentColor.g);
-			//Debug.Log ("finalColor.g = " + currentColor.g);
-			if (currentColor.g + gap >= finalColor.g && currentColor.g <= finalColor.g) {
-				currentColor.g = finalColor.g;
-				doneG = true;
-				//Debug.Log ("DoneG");	
-			} else if (currentColor.g - gap <= finalColor.g && currentColor.g >= finalColor.g) {
-				currentColor.g = finalColor.g;
-				doneG = true;
-				//Debug.Log ("DoneG");
-			} else {
-				if (currentColor.g > finalColor.g) {
-					currentColor.g = currentColor.g - gap;
-				} else if (currentColor.g < finalColor.g) {
-					currentColor.g = currentColor.g + gap;
-				}
-			}
+			retorno = updateColor(currentColor.g , finalColor.g);
+			currentColor.g = retorno.getColorComponent();
+			doneG = retorno.isfinished ();
 		}
-
 		if(!doneB){
-			//Debug.Log ("currentColor.b = " + currentColor.b);
-			//Debug.Log ("finalColor.b = " + currentColor.b);
-			if (currentColor.b + gap >= finalColor.b && currentColor.b <= finalColor.b) {
-				currentColor.b = finalColor.b;
-				doneB = true;
-				//Debug.Log ("doneB");	
-			} else if (currentColor.b - gap <= finalColor.b && currentColor.b >= finalColor.b) {
-				currentColor.b = finalColor.b;
-				doneB = true;
-				//Debug.Log ("doneB");
-			} else {
-				if (currentColor.b > finalColor.b) {
-					currentColor.b = currentColor.b - gap;
-				} else if (currentColor.b < finalColor.b) {
-					currentColor.b = currentColor.b + gap;
-				}
-			}
+			retorno = updateColor(currentColor.b , finalColor.b);
+			currentColor.b = retorno.getColorComponent();
+			doneB = retorno.isfinished ();
 		}
 
 		if(doneR && doneG && doneB){
@@ -150,6 +93,23 @@ public class ColorHandler : MonoBehaviour {
 		}
 
 		rend.material.color = currentColor;
-		playerLight.color = currentColor;
+		objectLight.color = currentColor;
 	}
+
+	private ColorUpdateReturn updateColor(float currentColorComponent, float finalColorComponent)
+	{
+		ColorUpdateReturn retorno = new ColorUpdateReturn ();
+		if (Math.Abs(currentColorComponent - finalColorComponent) < gap ) {
+			retorno.setColorComponent(finalColorComponent);
+			retorno.setfinished (true);
+		} else {
+			if (currentColorComponent > finalColorComponent) {
+				retorno.setColorComponent(currentColorComponent - gap);
+			} else if (currentColorComponent < finalColorComponent) {
+				retorno.setColorComponent(currentColorComponent + gap);
+			}
+		}
+		return retorno;
+	}
+
 }

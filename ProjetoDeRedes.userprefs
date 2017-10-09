@@ -1,14 +1,20 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player Control\PowerUps.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player Control\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\MainController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player Control\PowerUps.cs" Line="48" Column="1" />
-      <File FileName="Assets\Scripts\Colors\ColorHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainController.cs" Line="3" Column="19" />
+      <File FileName="Assets\Scripts\Colors\ColorHandler.cs" Line="56" Column="3" />
+      <File FileName="Assets\Scripts\Colors\ColorUpdateReturn.cs" Line="7" Column="10" />
+      <File FileName="Assets\Scripts\Player Control\PowerUps.cs" Line="59" Column="34" />
+      <File FileName="Assets\Scripts\Player Control\RotatePowerUps.cs" Line="6" Column="2" />
+      <File FileName="Assets\Scripts\Player Control\PlayerController.cs" Line="46" Column="49" />
+      <File FileName="Assets\Scripts\PowerUpElement.cs" Line="16" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\vis_a\ProjetoDeRedes\Assets\Scripts\Colors\ColorHandler.cs" line="82" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

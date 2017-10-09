@@ -4,64 +4,83 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour {
 
-	bool powerUpOn = false;
-	bool updating = false;
+	int maxNObjects = 6;				// Número máximo de spawns de objetos
+	bool powerUpOn = false;				// Existe algum power up ativo?
+	bool updating = false;				// Já existe um processo de spawning acontecendo?
 
-	public float orbitRadius;
-	public float frequency;
-	public float nObjects;
+	// Referência para os prefabs de cada power up
+	public GameObject powerUpPrefab_Vermelho;
+	public GameObject powerUpPrefab_Verde;
+	public GameObject powerUpPrefab_Azul;
+	public GameObject powerUpPrefab_Amarelo;
 
-	public GameObject powerUpPrefab;
-
-	private GameObject[] powerUp;
-	private Transform[] positions;
+	private GameObject[] powerUp;		// Array dos objetos no power up
 
 
-	IEnumerator SpawnBoxes(){
+	// Responsável por chamar o spawn certo para cada power up
+	void turnOnPowerUp(int powerUpOption){
+		if(powerUpOption == 1){
+			StartCoroutine(SpawnBoxes (powerUpPrefab_Vermelho));
+		}
+		if(powerUpOption == 2){
+			StartCoroutine(SpawnBoxes (powerUpPrefab_Verde));
+		}
+		if(powerUpOption == 3){
+			StartCoroutine(SpawnBoxes (powerUpPrefab_Azul));
+		}
+		if(powerUpOption == 4){
+			StartCoroutine(SpawnBoxes (powerUpPrefab_Amarelo));
+		}
+	}
+
+	// Responsável por matar os spawns nos power ups
+	void turnOffPowerUp(){
+		for(int i=0; i<maxNObjects; i++){
+			if(powerUp[i]){
+				Destroy (powerUp[i]);
+			}
+		}
+	}
+
+	// ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO - Faz tudo
+	public void setPowerUp(int powerUpOption){
+		// Se não estiver ligado
+		if (!powerUpOn) {
+			powerUpOn = true;
+			updating = true;
+			turnOnPowerUp (powerUpOption);
+		// Se estiver ligado e não estiver sendo criado
+		} else if (powerUpOn && !updating) {
+			powerUpOn = false;
+			turnOffPowerUp ();
+
+			powerUpOn = true;
+			updating = true;
+			turnOnPowerUp (powerUpOption);
+		}
+	}
+		
+	// Método de spawn
+	IEnumerator SpawnBoxes(GameObject powerUpPrefab){
+		float nObjects = powerUpPrefab.GetComponent<RotatePowerUps>().nObjects;
+
+		Debug.Log (nObjects);
+
 		Vector3 myPosition = transform.position;
 		for(int i=0; i<nObjects; i++){
 			//Debug.Log ("Spawning - " + i);
 			powerUp[i] = (GameObject) Instantiate (powerUpPrefab, myPosition, transform.rotation, gameObject.transform);
-			powerUp [i].GetComponent<RotatePowerUps> ().offset = (360f/nObjects)*i;
+			powerUp[i].GetComponent<RotatePowerUps>().offset = (360f/nObjects)*i;
+			powerUp[i].GetComponent<RotatePowerUps>().player = gameObject;
 			//Debug.Log (360f / (orbitDegreesPerSec * nObjects));
 			//yield return new WaitForSeconds ( 360f / (orbitDegreesPerSec * nObjects));
 		}
 		updating = false;
 		yield return null;
 	}
-
-	void turnOnPowerUp(){
-		StartCoroutine(SpawnBoxes ());
-	}
-
-	void turnOffPowerUp(){
-		for(int i=0; i<powerUp.Length; i++){
-			Destroy (powerUp[i]);
-		}
-	}
-
-
-	// Use this for initialization
-	void Start () {
-		powerUp = new GameObject[(int)nObjects];
-	}
-
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown("x")){
-			//Debug.Log ("1");
-			if (!powerUpOn) {
-				//Debug.Log ("2");
-				powerUpOn = true;
-				updating = true;
-				turnOnPowerUp ();
-			} else if(powerUpOn && !updating){
-				//Debug.Log ("3");
-				powerUpOn = false;
-				turnOffPowerUp();
-			}
-
-		}
-	}
 		
+
+	void Start () {
+		powerUp = new GameObject[maxNObjects];
+	}
 }
