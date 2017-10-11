@@ -4,13 +4,14 @@ using UnityEngine;
 
 public abstract class Seres : MonoBehaviour {
 
-
+    private float maxHealthPoints;
 	private float lifePoints;
 	private bool alive = true;
 
 	// Use this for initialization
 	void Start () {
 		lifePoints = getInitialLifePoints();
+        maxHealthPoints = lifePoints;
 	}
 	
 	// Update is called once per frame
@@ -21,7 +22,7 @@ public abstract class Seres : MonoBehaviour {
 	public abstract float getInitialLifePoints();
 	public abstract void death ();	
 
-	public void ReceiveDamage(float damage){
+	public void receiveDamage(float damage){
 		lifePoints -= damage;
 		if(lifePoints <= 0 ){
 			alive = false;
@@ -38,7 +39,15 @@ public abstract class Seres : MonoBehaviour {
 	public void setLifePoints(float lifePoints){
 		this.lifePoints = lifePoints;
 	}	
-	public void setAlive(bool alive){
+	public void isAlive(bool alive){
 		this.alive = alive;
-	}	
+	}
+    public void setMaxLifePoints(float lifePoints)
+    {
+        this.lifePoints = lifePoints;
+    }
+    public float getMaxLifePoints()
+    {
+        return maxHealthPoints;
+    }
 }

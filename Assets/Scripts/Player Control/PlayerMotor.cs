@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class PlayerMotor : MonoBehaviour {
 
 	private Vector3 velocity = Vector3.zero;
-
+    private GameObject player;
+    private PlayerStatus status;
 	private Rigidbody rb;
 
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
-	}
+        player = this.gameObject;
+        status = player.GetComponent<PlayerStatus>();
+    }
 
 	// Gets a movement vector
 	public void Move(Vector3 _velocity){
@@ -21,7 +24,9 @@ public class PlayerMotor : MonoBehaviour {
 
 	// Run every physics iteration
 	void FixedUpdate(){
-		PerformMovement ();
+        if (status.isAlive()) {
+            PerformMovement();
+        }
 	}
 
 	// Perform movement based on velocity variable

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EA6912B8-9CBF-EA52-891B-5B537734B9B4}</ProjectGuid>
+    <ProjectGuid>{41C875B9-CB88-B2BB-BD59-96DA8E61C473}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Colors\ColorHandler.cs" />
      <Compile Include="Assets\Scripts\Colors\ColorUpdateReturn.cs" />
      <Compile Include="Assets\Scripts\DeathPlane\Deadly.cs" />
+     <Compile Include="Assets\Scripts\Enemies\EnemyCubulus.cs" />
      <Compile Include="Assets\Scripts\ExtraUtilities.cs" />
      <Compile Include="Assets\Scripts\MainController.cs" />
      <Compile Include="Assets\Scripts\Orbit.cs" />

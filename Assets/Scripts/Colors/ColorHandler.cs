@@ -33,8 +33,9 @@ public class ColorHandler : MonoBehaviour {
 	// Start --> Criar uma referência para o render e a luz do objeto
 	protected void Start() {
 		rend = GetComponent<Renderer> ();
-		objectLight = gameObject.GetComponent<Light> ();
-	}
+		objectLight = gameObject.GetComponent<Light> (); 
+
+    }
 
 	// Checa uma vez por frame se é necessário mudar a cor deste objeto
 	protected void Update () {
@@ -111,5 +112,7 @@ public class ColorHandler : MonoBehaviour {
 		}
 		return retorno;
 	}
-
+    public Color getfinalColor() {
+        return finalColor;
+    }
 }

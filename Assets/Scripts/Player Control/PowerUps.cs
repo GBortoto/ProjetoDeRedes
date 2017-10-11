@@ -34,7 +34,7 @@ public class PowerUps : MonoBehaviour {
 	}
 
 	// Responsável por matar os spawns nos power ups
-	void turnOffPowerUp(){
+	public void turnOffPowerUp(){
 		for(int i=0; i<maxNObjects; i++){
 			if(powerUp[i]){
 				Destroy (powerUp[i]);
