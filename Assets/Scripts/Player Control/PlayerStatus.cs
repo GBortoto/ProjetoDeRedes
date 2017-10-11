@@ -18,9 +18,9 @@ public class PlayerStatus : Seres {
     {
         this.isAlive(false);
         deathCountDown = 5f;
+        explosionEffect();
         resetPowerUps();
         hidingPlayer();
-        explosionEffect();
         Debug.Log(this.gameObject.name + " morreu");
         //seta os life points de volta para o maximo
         this.setLifePoints(this.getMaxLifePoints());
@@ -65,6 +65,7 @@ public class PlayerStatus : Seres {
                 Debug.Log(bodyPlayer.position);
                 this.GetComponent<MeshRenderer>().enabled = true;
                 this.GetComponent<Light>().intensity = 4;
+                resetPowerUps();
             }
         }
 	}
