@@ -12,7 +12,7 @@ public class PlayerStatus : Seres {
     public GameObject explosion;
 
     Rigidbody bodyPlayer;
-    private float deathCountDown = 5f;
+    public float deathCountDown = 5f;
 
     public override void death()
     {
@@ -36,9 +36,8 @@ public class PlayerStatus : Seres {
     }
 
     private void resetPowerUps() {
-        this.GetComponent<PowerUps>().turnOffPowerUp();
-        ColorHandler colorControlPlayer = this.GetComponent<ColorHandler>();
-        colorControlPlayer.changeColor(Color.white);
+		this.GetComponent<PowerUps>().hardReset();
+        this.GetComponent<ColorHandler>().changeColor(Color.white);
     }
 
     public override float getInitialLifePoints()
@@ -62,7 +61,7 @@ public class PlayerStatus : Seres {
             }else{
                 this.isAlive(true);
                 bodyPlayer.position = lastCheckPoint;
-                Debug.Log(bodyPlayer.position);
+                //Debug.Log(bodyPlayer.position);
                 this.GetComponent<MeshRenderer>().enabled = true;
                 this.GetComponent<Light>().intensity = 4;
                 resetPowerUps();
@@ -73,6 +72,6 @@ public class PlayerStatus : Seres {
         posCheckPoint.y = posCheckPoint.y+10;
         lastCheckPoint = posCheckPoint;
         this.receiveDamage(10);
-        Debug.Log(posCheckPoint);
+        //Debug.Log(posCheckPoint);
     }
 }

@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour {
 
 	private int currentPowerUp = 0;				// Valor do power up atual
 
+	private bool powerUpOnCooldown = false;
+
+	private float defaultSpeed = 5f;
+
+	private float howLongOnCooldown = 1f;
+
 	// Getter para currentPowerUp
 	public int getCurrentPowerUp(){
 		return currentPowerUp;
@@ -27,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start(){
 		motor = GetComponent<PlayerMotor> ();
-		powerUpColors = new Color[] {new Color(1, 0, 0), new Color(0, 1, 0), new Color(0, 0, 1), new Color(1, 1, 0)};
+		powerUpColors = new Color[] {new Color(1, 1, 1), new Color(1, 0, 0), new Color(0, 1, 0), new Color(0, 0, 1), new Color(1, 1, 0)};
 	}
 
 
@@ -44,16 +50,65 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO
-	public void applyPowerUp(int powerUpOption){
-		gameObject.GetComponent<PowerUps> ().setPowerUp (powerUpOption);
-		gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[powerUpOption-1]);
+	public bool applyPowerUp(int powerUpOption){
+		bool result1 = gameObject.GetComponent<PowerUps> ().setPowerUp (powerUpOption);
+		bool result2 = gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[powerUpOption]);
+
+		// Se a troca de cor e as particulas foram devidamente atualizadas, então aplicar o efeito do power up
+		if (result1 && result2) {
+
+			// Efeito 0) Sem power up --> Estado inicial
+			if(powerUpOption == 0){
+				this.speed = defaultSpeed;
+			}
+
+			// Efeito 1) Vermelho --> Ainda sem efeito
+			if(powerUpOption == 1){
+				this.speed = defaultSpeed;
+			}
+
+			// Efeito 2) Verde --> Ainda sem efeito
+			if(powerUpOption == 2){
+				this.speed = defaultSpeed;
+			}
+
+			// Efeito 3) Azul --> Velocidade de movimento dobrada
+			if(powerUpOption == 3){
+				this.speed = defaultSpeed;
+			}
+
+			// Efeito 4) Amarelo --> Ainda sem efeito
+			if(powerUpOption == 4){
+				this.speed = defaultSpeed;
+			}
+			return true;
+		// Se, por algum motivo, a troca de cor ou o spawn das particulas não for devidamente atualizada, voltar para o estado padrão
+		} else {
+			gameObject.GetComponent<PowerUps> ().setPowerUp (0);
+			gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[0]);
+
+			this.speed = defaultSpeed;
+			return false;
+		}
 	}
 
-	void OnTriggerEnter(Collider other) {
+	// Esta função aplica o cooldown dos power ups - Roda em uma nova thread
+	IEnumerator countCooldown(){
+		powerUpOnCooldown = true;
+		//Debug.Log ("powerUpOnCooldown: " + powerUpOnCooldown);
+		yield return new WaitForSeconds (howLongOnCooldown);
+		powerUpOnCooldown = false;
+		//Debug.Log ("powerUpOnCooldown: " + powerUpOnCooldown);
+	}
+
+	void OnTriggerStay(Collider other) {
 		//Debug.Log(other.gameObject.tag);
-		if(other.gameObject.CompareTag("PowerUp")){
-			applyPowerUp (other.gameObject.GetComponent<PowerUpElement>().getPowerUpOption());
+		if (other.gameObject.CompareTag ("PowerUp") && !powerUpOnCooldown) {
+			StartCoroutine (countCooldown ());
+			applyPowerUp (other.gameObject.GetComponent<PowerUpElement> ().getPowerUpOption ());
 			Destroy (other.gameObject);
 		}
 	}
+
+
 }

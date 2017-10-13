@@ -50,14 +50,14 @@ public class ColorHandler : MonoBehaviour {
 	}
 
 	// Comando para modificar a cor --> ESTE É O COMANDO A SER CHAMADO EXTERNAMENTE
-	public void changeColor(Color color, float speed = 10f){
+	public bool changeColor(Color color, float speed = 10f){
 		if(rend == null){
 			rend = GetComponent<Renderer> ();
 		}
 
 		// A cor já está sendo modificada?
 		if(updateRGB){
-			return;
+			return false;
 		}
 			
 		currentColor = rend.material.color;	// Cor atual é atualizada
@@ -67,6 +67,8 @@ public class ColorHandler : MonoBehaviour {
 		doneR = false;						// Ainda não está completo a parte R de RGB
 		doneG = false;						// Ainda não está completo a parte G de RGB
 		doneB = false;						// Ainda não está completo a parte B de RGB
+
+		return true;
 	}
 		
 

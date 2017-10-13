@@ -8,6 +8,8 @@ public class PowerUps : MonoBehaviour {
 	bool powerUpOn = false;				// Existe algum power up ativo?
 	bool updating = false;				// Já existe um processo de spawning acontecendo?
 
+	bool hardReseting = false;			// Variável utilizada somente durante um hard reset
+
 	// Referência para os prefabs de cada power up
 	public GameObject powerUpPrefab_Vermelho;
 	public GameObject powerUpPrefab_Verde;
@@ -43,28 +45,43 @@ public class PowerUps : MonoBehaviour {
 	}
 
 	// ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO - Faz tudo
-	public void setPowerUp(int powerUpOption){
+	public bool setPowerUp(int powerUpOption){
+
+		if(!gameObject.GetComponent<PlayerStatus>().isAlive()){
+			return false;
+		}
+			
 		// Se não estiver ligado
 		if (!powerUpOn) {
 			powerUpOn = true;
 			updating = true;
 			turnOnPowerUp (powerUpOption);
+			return true;
 		// Se estiver ligado e não estiver sendo criado
 		} else if (powerUpOn && !updating) {
 			powerUpOn = false;
 			turnOffPowerUp ();
 
-			powerUpOn = true;
-			updating = true;
-			turnOnPowerUp (powerUpOption);
+			if(powerUpOption > 0){
+				powerUpOn = true;
+				updating = true;
+				turnOnPowerUp (powerUpOption);	
+			}
+			return true;
 		}
+		return false;
 	}
 		
 	// Método de spawn
 	IEnumerator SpawnBoxes(GameObject powerUpPrefab){
+		if(hardReseting){
+			//Debug.Log ("SpawnBoxes - Hard reseting");
+			yield break;
+		}
+
 		float nObjects = powerUpPrefab.GetComponent<RotatePowerUps>().nObjects;
 
-		Debug.Log (nObjects);
+		//Debug.Log (nObjects);
 
 		Vector3 myPosition = transform.position;
 		for(int i=0; i<nObjects; i++){
@@ -82,5 +99,23 @@ public class PowerUps : MonoBehaviour {
 
 	void Start () {
 		powerUp = new GameObject[maxNObjects];
+	}
+
+	IEnumerator hardResetCountdown(){
+		//Debug.Log ("hardReset - counting down");
+		yield return new WaitForSeconds (gameObject.GetComponent<PlayerStatus>().deathCountDown);
+		hardReseting = false;
+		//Debug.Log ("hardReset - finished counting down");
+	}
+
+	public void hardReset(){
+		//Debug.Log ("hardReset - Starting");
+		hardReseting = true;
+		powerUpOn = false;
+		updating = false;
+		StopCoroutine ("SpawnBoxes");
+		turnOffPowerUp ();
+		StartCoroutine(hardResetCountdown ());
+		//Debug.Log ("hardReset - Finishing");
 	}
 }
