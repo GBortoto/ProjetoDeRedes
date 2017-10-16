@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,15 +48,38 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 		updateMovimento ();
+        updateShoot();
 	}
 
-	// ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO
-	public bool applyPowerUp(int powerUpOption){
+    private void updateShoot() {
+        if (Input.GetMouseButtonDown(0)) {
+            Camera cam = Camera.main;
+            Vector3 mousePosition = Input.mousePosition;
+      
+            mousePosition.z = 10f;
+            Vector3 worldMousePosition = cam.ScreenToWorldPoint(mousePosition);
+            worldMousePosition.z = 0f;
+            Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
+            int powerUpAtual = findColorNumber(corAtual);
+            this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual );
+        }
+    }
+
+    private int findColorNumber(Color corAtual) {
+        for (int i = 0; i < powerUpColors.Length; i++) {
+            if (powerUpColors[i] == corAtual) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    // ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO
+    public bool applyPowerUp(int powerUpOption){
 		bool result1 = gameObject.GetComponent<PowerUps> ().setPowerUp (powerUpOption);
 		bool result2 = gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[powerUpOption]);
-
-		// Se a troca de cor e as particulas foram devidamente atualizadas, então aplicar o efeito do power up
-		if (result1 && result2) {
+        // Se a troca de cor e as particulas foram devidamente atualizadas, então aplicar o efeito do power up
+        if (result1 && result2) {
 
 			// Efeito 0) Sem power up --> Estado inicial
 			if(powerUpOption == 0){

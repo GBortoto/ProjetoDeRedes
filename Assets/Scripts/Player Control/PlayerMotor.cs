@@ -35,5 +35,7 @@ public class PlayerMotor : MonoBehaviour {
 			rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 		}
 	}
-
+    public Vector3 getPosition() {
+        return rb.position;
+    }
 }

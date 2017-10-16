@@ -51,7 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Camera.cs" />
+     <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\CameraPrincipal.cs" />
      <Compile Include="Assets\Scripts\Colors\ColorHandler.cs" />
      <Compile Include="Assets\Scripts\Colors\ColorUpdateReturn.cs" />
      <Compile Include="Assets\Scripts\DeathPlane\Deadly.cs" />
@@ -68,6 +69,7 @@
      <Compile Include="Assets\Scripts\SavePoint\Float.cs" />
      <Compile Include="Assets\Scripts\SavePoint\SaveSpace.cs" />
      <Compile Include="Assets\Scripts\Seres.cs" />
+     <Compile Include="Assets\Scripts\ShottingController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
