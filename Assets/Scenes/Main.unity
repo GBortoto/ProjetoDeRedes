@@ -2660,13 +2660,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f21f7f7203eb46b0517877defbebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4,
+  whiteBullet: {fileID: 1439940706310222, guid: f8211c9b6b3dc9b479744f899a49d831,
     type: 2}
   redBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4, type: 2}
-  blueBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4, type: 2}
-  yellowBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4,
+  blueBullet: {fileID: 1439940706310222, guid: aa315c4b2a0b7c740b6cf16c2cb36a93, type: 2}
+  yellowBullet: {fileID: 1439940706310222, guid: 7e9cb5899e1c0b44a9769571a099e161,
     type: 2}
-  greenBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4,
+  greenBullet: {fileID: 1439940706310222, guid: 0b5fb2f81ce011a449979c203231d051,
     type: 2}
   firePoint: {fileID: 798931163}
 --- !u!1 &940789939

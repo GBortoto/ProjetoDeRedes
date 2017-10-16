@@ -374,7 +374,6 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
 --- !u!114 &114378188652482868

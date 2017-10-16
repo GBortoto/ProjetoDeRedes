@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour {
             worldMousePosition.z = 0f;
             Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
             int powerUpAtual = findColorNumber(corAtual);
-            this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual );
+            this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual);
         }
     }
 
