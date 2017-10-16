@@ -8,10 +8,14 @@ public abstract class Seres : MonoBehaviour {
 	private float lifePoints;
 	private bool alive = true;
 
+    public Seres() {
+        lifePoints = getInitialLifePoints();
+        maxHealthPoints = lifePoints;
+    }
+
 	// Use this for initialization
 	void Start () {
-		lifePoints = getInitialLifePoints();
-        maxHealthPoints = lifePoints;
+       
 	}
 	
 	// Update is called once per frame

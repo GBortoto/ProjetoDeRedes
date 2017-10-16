@@ -26,17 +26,17 @@ public class Bullet : MonoBehaviour {
             if(explosionRadius > 0 ){
                 GameObject explosionParticles = (GameObject)Instantiate(explosion, this.GetComponent<Rigidbody>().position, this.GetComponent<Rigidbody>().rotation);
                 Destroy(explosionParticles, 5);
-                this.gameObject.SetActive(false);
+                Debug.Log(this.GetComponent<Rigidbody>().position);
+                isExploded = true;
                 foreach (Collider col in Physics.OverlapSphere(this.GetComponent<Rigidbody>().position, explosionRadius)) {
-                    Debug.Log("Entra no forEach");
-                    Debug.Log(col.GetComponent<Rigidbody>());
-                    Debug.Log(col.gameObject.tag );
-                    if ((col.GetComponent<Rigidbody>() != null) && (col.gameObject.tag =="Enemy")){
-                        
-                        this.GetComponent<Rigidbody>().AddExplosionForce(3.0f, this.GetComponent<Rigidbody>().position, explosionRadius);
+                    Rigidbody rb = col.GetComponent<Rigidbody>();
+                    if((rb != null) && (col.gameObject.tag.Equals("Enemy"))) {
+                        EnemyCubulus inimigo = rb.GetComponent<EnemyCubulus>();
+                        rb.AddExplosionForce(10f, this.GetComponent<Rigidbody>().position, explosionRadius ,2);
+                        inimigo.receiveDamage(damage);
                     }
                 }
-                isExploded = true;
+                this.gameObject.SetActive(false);
             }
         }
 	}

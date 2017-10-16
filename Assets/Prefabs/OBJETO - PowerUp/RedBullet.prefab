@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
-  explosionRadius: 1.2
+  explosionRadius: 3
   delaytime: 2
   timeBeforeDestroy: 2
   damage: 5
