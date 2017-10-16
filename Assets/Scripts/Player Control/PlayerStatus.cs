@@ -12,12 +12,12 @@ public class PlayerStatus : Seres {
     public GameObject explosion;
 
     Rigidbody bodyPlayer;
-    public float deathCountDown = 5f;
+    public float deathCountDown = 3f;
 
     public override void death()
     {
         this.isAlive(false);
-        deathCountDown = 5f;
+        deathCountDown = 3f;
         explosionEffect();
         resetPowerUps();
         hidingPlayer();
@@ -70,7 +70,7 @@ public class PlayerStatus : Seres {
     public void setLastCheckPoint(Vector3 posCheckPoint){
         posCheckPoint.y = posCheckPoint.y+10;
         lastCheckPoint = posCheckPoint;
-        this.receiveDamage(10);
+        //this.receiveDamage(10);
         //Debug.Log(posCheckPoint);
     }
 }

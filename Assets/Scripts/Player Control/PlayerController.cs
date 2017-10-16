@@ -7,6 +7,14 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
 
+	// for jumping
+	bool grounded = false;
+	Collider[] groundCollisions;
+	float groundCheckRadius = 0.2f;
+	public LayerMask groundLayer;
+	public Transform groundCheck;
+	public float jumpHeight;
+
 	private int currentPowerUp = 0;				// Valor do power up atual
 
 	private bool powerUpOnCooldown = false;
@@ -39,16 +47,38 @@ public class PlayerController : MonoBehaviour {
 
 
 	void updateMovimento(){
-		
 		float _xMov = Input.GetAxisRaw("Horizontal");		// Calculate movement velocity as a 3D vector
 		Vector3 _movHorizontal = transform.right * _xMov;
 		Vector3 _velocity = _movHorizontal * speed;
-		motor.Move(_velocity);								// Apply movement
+
+		Vector3 _yandxMov = _velocity;
+		if (jump () == true) {
+			Vector3 _jump = new Vector3 (0, jumpHeight, 0);
+			_yandxMov += _jump;
+		}
+			
+		motor.Move(_yandxMov);								// Apply movement
+	}
+
+	bool jump () {
+		if (grounded && Input.GetAxis ("Jump") > 0) {
+			grounded = false;
+			return true;
+		}
+
+		// Draw a sphere on the feet of the soldier and get it's collisions with the groundLayer
+		groundCollisions = Physics.OverlapSphere (groundCheck.position, groundCheckRadius, groundLayer);
+		if (groundCollisions.Length > 0)
+			grounded = true;
+		else
+			grounded = false;
+
+		return false;
 	}
 
 	void Update(){
 		updateMovimento ();
-        updateShoot();
+        updateShoot ();
 	}
 
     private void updateShoot() {
