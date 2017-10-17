@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ShottingController : MonoBehaviour {
+public class ShottingController : NetworkBehaviour {
     [Header("Bullet Types")]
     public GameObject whiteBullet;
     public GameObject redBullet;
@@ -28,12 +29,13 @@ public class ShottingController : MonoBehaviour {
     void Update() {
         timePassed += Time.deltaTime;
     }
-
-    public void Shoot(Vector3 mousePosition , int powerUpAtual) {
-		// Get what bullet is going to be shot
+    [Command]
+    public void CmdShoot(Vector3 mousePosition , int powerUpAtual) {
+        // Get what bullet is going to be shot
         GameObject currentBulletObject = getCurrentBullet(powerUpAtual);
     
-		Bullet currentBullet = currentBulletObject.GetComponent<Bullet>(); 
+		Bullet currentBullet = currentBulletObject.GetComponent<Bullet>();
+        Debug.Log(timePassed);
 		if (timePassed > currentBullet.delaytime) {
             // Set up the shot direction
 			Vector3 direction = mousePosition - firePoint.position;
@@ -41,10 +43,11 @@ public class ShottingController : MonoBehaviour {
             
 			// Instantiate the bullet above
 			GameObject newBullet = (GameObject) Instantiate(currentBulletObject, firePoint.position, firePoint.rotation);
-			//GameObject newBullet = (GameObject) Instantiate(redBullet, firePoint.position , firePoint.rotation);
-            
-			newBullet.GetComponent<Rigidbody>().AddRelativeForce(direction *  currentBullet.speed);
+            //GameObject newBullet = (GameObject) Instantiate(redBullet, firePoint.position , firePoint.rotation);
+
+            newBullet.GetComponent<Rigidbody>().AddRelativeForce(direction *  currentBullet.speed);
             Destroy(newBullet, currentBullet.timeBeforeDestroy + 1);
+            NetworkServer.Spawn(newBullet);
             timePassed = 0;
         }
     }

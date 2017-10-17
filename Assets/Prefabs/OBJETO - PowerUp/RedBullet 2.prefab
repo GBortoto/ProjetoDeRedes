@@ -57,6 +57,8 @@ GameObject:
   - component: {fileID: 96935516284212998}
   - component: {fileID: 65539037142023120}
   - component: {fileID: 114378188652482868}
+  - component: {fileID: 114677885858297300}
+  - component: {fileID: 114409618753289552}
   m_Layer: 0
   m_Name: RedBullet 2
   m_TagString: Untagged
@@ -374,6 +376,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
+    generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
 --- !u!114 &114378188652482868
@@ -393,3 +396,56 @@ MonoBehaviour:
   timeBeforeDestroy: 2
   damage: 5
   explosion: {fileID: 1790975367203868, guid: fa9b50234311ed343a4deaa3641bb26d, type: 2}
+--- !u!114 &114409618753289552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439940706310222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114677885858297300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439940706310222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 11
+    i1: 95
+    i2: 178
+    i3: 248
+    i4: 28
+    i5: 224
+    i6: 17
+    i7: 164
+    i8: 73
+    i9: 151
+    i10: 156
+    i11: 32
+    i12: 50
+    i13: 49
+    i14: 208
+    i15: 81
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

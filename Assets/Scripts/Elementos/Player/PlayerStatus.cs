@@ -70,7 +70,5 @@ public class PlayerStatus : Seres {
     public void setLastCheckPoint(Vector3 posCheckPoint){
         posCheckPoint.y = posCheckPoint.y+10;
         lastCheckPoint = posCheckPoint;
-        //this.receiveDamage(10);
-        //Debug.Log(posCheckPoint);
     }
 }

@@ -20,7 +20,6 @@ public class SaveSpace : MonoBehaviour
         {
             playerIsPresent = true;
             showActivateButton();
-            Debug.Log(player.name + " Entrou");
             playerStatus.setLastCheckPoint(this.gameObject.transform.position);
         }
     }
@@ -30,7 +29,6 @@ public class SaveSpace : MonoBehaviour
         player = other.gameObject;
         playerIsPresent = false;
         hideActivateButton();
-        Debug.Log(player.name + " Saiu");
     }
 
     void showActivateButton()

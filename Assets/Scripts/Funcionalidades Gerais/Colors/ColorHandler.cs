@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using System;
 
-public class ColorHandler : MonoBehaviour {
+public class ColorHandler : NetworkBehaviour {
 
 	protected Color currentColor;		// Cor atual --> Muda durante o processo de alteração de cores
 	private Color finalColor;			// Cor final --> Representa o objetivo final atual em relação a cor
@@ -44,21 +45,22 @@ public class ColorHandler : MonoBehaviour {
 
 	// Checa se é necessário mudar a cor deste objeto
 	void updateObjectColor(){
-		if(updateRGB){
-			updateObjectRGB();
+        if (updateRGB){
+			CmdUpdateObjectRGB();
 		}
 	}
 
 	// Comando para modificar a cor --> ESTE É O COMANDO A SER CHAMADO EXTERNAMENTE
+
 	public bool changeColor(Color color, float speed = 10f){
 		if(rend == null){
 			rend = GetComponent<Renderer> ();
 		}
 
-		// A cor já está sendo modificada?
-		if(updateRGB){
-			return false;
-		}
+        // A cor já está sendo modificada?
+        if (updateRGB) {
+            return false;
+        }
 			
 		currentColor = rend.material.color;	// Cor atual é atualizada
 		finalColor = color;					// Cor final é atualizada
@@ -73,7 +75,7 @@ public class ColorHandler : MonoBehaviour {
 		
 
 	// Checa se todas as parcelas de RGB estão no valor certo. As modifica caso contrário
-	protected void updateObjectRGB(){
+	[Command] protected void CmdUpdateObjectRGB(){
 		ColorUpdateReturn retorno;
 		if(!doneR){
 			retorno = updateColor(currentColor.r , finalColor.r);

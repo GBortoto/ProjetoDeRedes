@@ -26,7 +26,6 @@ public class EnemyCubulus : Seres {
 
     public new void receiveDamage(float damage) {
         base.receiveDamage(damage);
-        Debug.Log(this.getlifePoints() / this.getMaxLifePoints());
         healthBar.fillAmount = this.getlifePoints() / this.getMaxLifePoints();
     }
 

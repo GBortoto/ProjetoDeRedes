@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour {
 		updateMovimento ();
 		updateShoot ();
 	}
-
 	private void updateShoot() {
 		if (Input.GetMouseButtonDown(0)) {
+           
 			Camera cam = Camera.main;
 			Vector3 mousePosition = Input.mousePosition;
 
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour {
 			worldMousePosition.z = 0f;
 			Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
 			int powerUpAtual = findColorNumber(corAtual);
-			this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual);
+            this.GetComponent<ShottingController>().CmdShoot(worldMousePosition, powerUpAtual);
 		}
 	}
 
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour {
 			// Se, por algum motivo, a troca de cor ou o spawn das particulas não for devidamente atualizada, voltar para o estado padrão
 		} else {
 			gameObject.GetComponent<PowerUps> ().setPowerUp (0);
-			gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[0]);
+			gameObject.GetComponent<ColorHandler>().changeColor(powerUpColors[0]);
 
 			this.speed = defaultSpeed;
 			return false;

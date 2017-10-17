@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 
 
-public class Bullet : MonoBehaviour {
+public class Bullet : NetworkBehaviour {
     public float speed = 0.3f;
     public float explosionRadius = 1.2f;
     public float delaytime = 2.0f;
@@ -26,7 +27,6 @@ public class Bullet : MonoBehaviour {
             if(explosionRadius > 0 ){
                 GameObject explosionParticles = (GameObject)Instantiate(explosion, this.GetComponent<Rigidbody>().position, this.GetComponent<Rigidbody>().rotation);
                 Destroy(explosionParticles, 5);
-                Debug.Log(this.GetComponent<Rigidbody>().position);
                 isExploded = true;
                 foreach (Collider col in Physics.OverlapSphere(this.GetComponent<Rigidbody>().position, explosionRadius)) {
                     Rigidbody rb = col.GetComponent<Rigidbody>();
