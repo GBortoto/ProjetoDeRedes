@@ -12,4 +12,8 @@ public class PowerUpElement : MonoBehaviour {
 	void Update(){
 		transform.Rotate (new Vector3 (45, 30, 15) * Time.deltaTime);
 	}
+
+	public void consume(){
+		GetComponentInParent<powerUpCooldown> ().consumePowerUp ();
+	}
 }

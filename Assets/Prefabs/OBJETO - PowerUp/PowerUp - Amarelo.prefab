@@ -39,6 +39,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4895030356390572}
+  - component: {fileID: 114893736521888416}
+  - component: {fileID: 114770434748610374}
+  - component: {fileID: 114167816409274260}
   m_Layer: 0
   m_Name: PowerUp - Amarelo
   m_TagString: Untagged
@@ -124,6 +127,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114167816409274260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852734997615622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bad8b1f7669a3a43b0f091e3f322e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp: {fileID: 1279582394906442}
 --- !u!114 &114213285190260546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,3 +165,56 @@ MonoBehaviour:
   degreesPerSecond: 15
   amplitude: 0.25
   frequency: 1
+--- !u!114 &114770434748610374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852734997615622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114893736521888416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852734997615622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 125
+    i1: 29
+    i2: 96
+    i3: 163
+    i4: 242
+    i5: 10
+    i6: 126
+    i7: 116
+    i8: 153
+    i9: 104
+    i10: 47
+    i11: 54
+    i12: 55
+    i13: 25
+    i14: 160
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

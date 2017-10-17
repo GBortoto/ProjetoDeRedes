@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 		float _xMov = Input.GetAxisRaw("Horizontal");		// Calculate movement velocity as a 3D vector
 		Vector3 _movHorizontal = transform.right * _xMov;
 		Vector3 _velocity = _movHorizontal * speed;
-        bool jumped = false;
+		bool jumped = false;
 
 		Vector3 _yandxMov = _velocity;
 		if (jumped = jump () == true) {
@@ -79,38 +79,38 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 		updateMovimento ();
-        updateShoot ();
+		updateShoot ();
 	}
 
-    private void updateShoot() {
-        if (Input.GetMouseButtonDown(0)) {
-            Camera cam = Camera.main;
-            Vector3 mousePosition = Input.mousePosition;
-      
-            mousePosition.z = 10f;
-            Vector3 worldMousePosition = cam.ScreenToWorldPoint(mousePosition);
-            worldMousePosition.z = 0f;
-            Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
-            int powerUpAtual = findColorNumber(corAtual);
-            this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual);
-        }
-    }
+	private void updateShoot() {
+		if (Input.GetMouseButtonDown(0)) {
+			Camera cam = Camera.main;
+			Vector3 mousePosition = Input.mousePosition;
 
-    private int findColorNumber(Color corAtual) {
-        for (int i = 0; i < powerUpColors.Length; i++) {
-            if (powerUpColors[i] == corAtual) {
-                return i;
-            }
-        }
-        return 0;
-    }
+			mousePosition.z = 10f;
+			Vector3 worldMousePosition = cam.ScreenToWorldPoint(mousePosition);
+			worldMousePosition.z = 0f;
+			Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
+			int powerUpAtual = findColorNumber(corAtual);
+			this.GetComponent<ShottingController>().Shoot(worldMousePosition, powerUpAtual);
+		}
+	}
 
-    // ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO
-    public bool applyPowerUp(int powerUpOption){
+	private int findColorNumber(Color corAtual) {
+		for (int i = 0; i < powerUpColors.Length; i++) {
+			if (powerUpColors[i] == corAtual) {
+				return i;
+			}
+		}
+		return 0;
+	}
+
+	// ESTE É O MÉTODO PÚBLICO QUE DEVE SER CHAMADO
+	public bool applyPowerUp(int powerUpOption){
 		bool result1 = gameObject.GetComponent<PowerUps> ().setPowerUp (powerUpOption);
 		bool result2 = gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[powerUpOption]);
-        // Se a troca de cor e as particulas foram devidamente atualizadas, então aplicar o efeito do power up
-        if (result1 && result2) {
+		// Se a troca de cor e as particulas foram devidamente atualizadas, então aplicar o efeito do power up
+		if (result1 && result2) {
 
 			// Efeito 0) Sem power up --> Estado inicial
 			if(powerUpOption == 0){
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 				this.speed = defaultSpeed;
 			}
 			return true;
-		// Se, por algum motivo, a troca de cor ou o spawn das particulas não for devidamente atualizada, voltar para o estado padrão
+			// Se, por algum motivo, a troca de cor ou o spawn das particulas não for devidamente atualizada, voltar para o estado padrão
 		} else {
 			gameObject.GetComponent<PowerUps> ().setPowerUp (0);
 			gameObject.GetComponent<ColorHandler> ().changeColor (powerUpColors[0]);
@@ -161,9 +161,10 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.CompareTag ("PowerUp") && !powerUpOnCooldown) {
 			StartCoroutine (countCooldown ());
 			applyPowerUp (other.gameObject.GetComponent<PowerUpElement> ().getPowerUpOption ());
-			Destroy (other.gameObject);
+			other.gameObject.GetComponent<PowerUpElement> ().consume ();
 		}
 	}
 
 
 }
+

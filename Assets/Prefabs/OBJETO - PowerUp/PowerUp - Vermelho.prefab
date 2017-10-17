@@ -39,6 +39,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4299079662760488}
+  - component: {fileID: 114545489424630690}
+  - component: {fileID: 114259050476088954}
+  - component: {fileID: 114401708057682264}
   m_Layer: 0
   m_Name: PowerUp - Vermelho
   m_TagString: Untagged
@@ -124,6 +127,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114259050476088954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565609558279170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114401708057682264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565609558279170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bad8b1f7669a3a43b0f091e3f322e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp: {fileID: 1155488697560668}
 --- !u!114 &114461644154502192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +172,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpOption: 1
+--- !u!114 &114545489424630690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565609558279170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 29
+    i1: 172
+    i2: 217
+    i3: 7
+    i4: 15
+    i5: 107
+    i6: 19
+    i7: 68
+    i8: 26
+    i9: 214
+    i10: 45
+    i11: 130
+    i12: 140
+    i13: 42
+    i14: 205
+    i15: 255
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114725448171626164
 MonoBehaviour:
   m_ObjectHideFlags: 1

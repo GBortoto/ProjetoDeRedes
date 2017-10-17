@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Power-Ups (Objetos)\powerUpCooldown.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Power-Ups (Objetos)\PrefabsManager.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\Elementos\Player\PlayerCamera.cs" Line="11" Column="28" />
+      <File FileName="Assets\Scripts\Elementos\Player\PlayerNetworkController.cs" Line="22" Column="41" />
+      <File FileName="Assets\Scripts\Power-Ups (Objetos)\PowerUpElement.cs" Line="14" Column="3" />
+      <File FileName="Assets\Scripts\Elementos\Player\PlayerController.cs" Line="164" Column="6" />
+      <File FileName="Assets\Scripts\Power-Ups (Objetos)\powerUpCooldown.cs" Line="20" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
