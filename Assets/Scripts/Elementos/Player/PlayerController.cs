@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour {
 			Camera cam = Camera.main;
 			Vector3 mousePosition = Input.mousePosition;
 
-			mousePosition.z = 10f;
+			mousePosition.z = 20f;
 			Vector3 worldMousePosition = cam.ScreenToWorldPoint(mousePosition);
 			worldMousePosition.z = 0f;
 			Color corAtual = this.GetComponent<ColorHandler>().getfinalColor();
