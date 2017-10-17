@@ -57,10 +57,10 @@ GameObject:
   - component: {fileID: 96935516284212998}
   - component: {fileID: 65539037142023120}
   - component: {fileID: 114378188652482868}
-  - component: {fileID: 114155828142246808}
-  - component: {fileID: 114318656004008776}
+  - component: {fileID: 114727644482024830}
+  - component: {fileID: 114209214578058108}
   m_Layer: 0
-  m_Name: RedBullet
+  m_Name: redBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03d97e5a507a27049bd7ea5febf4d81a, type: 2}
+  - {fileID: 2100000, guid: ad5b5a69d343e8546a4a93959cf39067, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -345,7 +345,7 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 0.9448277, g: 1, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -379,39 +379,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
---- !u!114 &114155828142246808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439940706310222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &114318656004008776
+--- !u!114 &114209214578058108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -444,8 +412,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
-  explosionRadius: 3
-  delaytime: 2
-  timeBeforeDestroy: 2
-  damage: 5
+  explosionRadius: 5
+  delaytime: 4
+  timeBeforeDestroy: 3
+  damage: 8
   explosion: {fileID: 1790975367203868, guid: fa9b50234311ed343a4deaa3641bb26d, type: 2}
+--- !u!114 &114727644482024830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439940706310222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 156
+    i2: 181
+    i3: 137
+    i4: 158
+    i5: 28
+    i6: 11
+    i7: 68
+    i8: 169
+    i9: 118
+    i10: 149
+    i11: 113
+    i12: 160
+    i13: 153
+    i14: 225
+    i15: 97
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

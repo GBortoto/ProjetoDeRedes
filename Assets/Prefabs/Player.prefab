@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1919371254822134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.53, y: 0.41, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4117740957634364}
@@ -331,13 +331,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f21f7f7203eb46b0517877defbebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteBullet: {fileID: 1439940706310222, guid: f8211c9b6b3dc9b479744f899a49d831,
+  whiteBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4,
     type: 2}
-  redBullet: {fileID: 1439940706310222, guid: b81ca9d12c7ffa54a9dcda19459f30d4, type: 2}
-  blueBullet: {fileID: 1439940706310222, guid: aa315c4b2a0b7c740b6cf16c2cb36a93, type: 2}
-  yellowBullet: {fileID: 1439940706310222, guid: 7e9cb5899e1c0b44a9769571a099e161,
+  redBullet: {fileID: 1439940706310222, guid: 7e9cb5899e1c0b44a9769571a099e161, type: 2}
+  blueBullet: {fileID: 1439940706310222, guid: 0b5fb2f81ce011a449979c203231d051, type: 2}
+  yellowBullet: {fileID: 1439940706310222, guid: aa315c4b2a0b7c740b6cf16c2cb36a93,
     type: 2}
-  greenBullet: {fileID: 1439940706310222, guid: 0b5fb2f81ce011a449979c203231d051,
+  greenBullet: {fileID: 1439940706310222, guid: f8211c9b6b3dc9b479744f899a49d831,
     type: 2}
   firePoint: {fileID: 4211202214539210}
 --- !u!114 &114649552940562012
