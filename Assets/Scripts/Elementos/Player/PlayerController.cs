@@ -50,14 +50,15 @@ public class PlayerController : MonoBehaviour {
 		float _xMov = Input.GetAxisRaw("Horizontal");		// Calculate movement velocity as a 3D vector
 		Vector3 _movHorizontal = transform.right * _xMov;
 		Vector3 _velocity = _movHorizontal * speed;
+        bool jumped = false;
 
 		Vector3 _yandxMov = _velocity;
-		if (jump () == true) {
+		if (jumped = jump () == true) {
 			Vector3 _jump = new Vector3 (0, jumpHeight, 0);
 			_yandxMov += _jump;
 		}
 			
-		motor.Move(_yandxMov);								// Apply movement
+		motor.Move(_yandxMov , jumped);								// Apply movement
 	}
 
 	bool jump () {
