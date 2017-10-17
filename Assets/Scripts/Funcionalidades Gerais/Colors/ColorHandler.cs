@@ -96,12 +96,19 @@ public class ColorHandler : NetworkBehaviour {
 		if(doneR && doneG && doneB){
 			updateRGB = false;
 		}
+        RpcPaintObj(this.gameObject, currentColor);
+        RpcChangeLightColor(this.gameObject , currentColor);
 
-		rend.material.color = currentColor;
-		objectLight.color = currentColor;
-	}
 
-	private ColorUpdateReturn updateColor(float currentColorComponent, float finalColorComponent)
+    }
+    [ClientRpc]private void RpcPaintObj(GameObject obj , Color paintColor) {
+        obj.GetComponent<Renderer>().material.color = paintColor;
+    }
+    [ClientRpc]private void RpcChangeLightColor(GameObject obj, Color paintColor) {
+        obj.GetComponent<Light>().color = paintColor;
+    }
+
+    private ColorUpdateReturn updateColor(float currentColorComponent, float finalColorComponent)
 	{
 		ColorUpdateReturn retorno = new ColorUpdateReturn ();
 		if (Math.Abs(currentColorComponent - finalColorComponent) < gap ) {
